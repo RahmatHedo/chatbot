@@ -3,81 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Chatbot Widget</title>
+    <title>Webify Studio | Digital Solutions</title>
+    
     <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <h1>Website Kamu</h1>
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-code"></i> Webify Studio</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Beranda</a></li>
+            <li><a href="#services">Layanan</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact" class="btn-contact">Hubungi Kami</a></li>
+        </ul>
+    </nav>
 
-    <button class="chat-btn" onclick="toggleChat()">💬</button>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="badge">🚀 Jasa Pembuatan Website Terbaik</span>
+            <h1>Bangun Identitas Digital <br>Bisnis Anda Sekarang</h1>
+            <p>Kami membantu UMKM dan perusahaan bertransformasi ke era digital dengan website yang cepat, aman, dan elegan.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="toggleChat()">Konsultasi Gratis</button>
+                <button class="btn-secondary">Lihat Portfolio</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="blob"></div>
+            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055666.png" alt="Web Development" class="floating-img">
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-title">
+            <h2>Kenapa Memilih Kami?</h2>
+            <p>Solusi lengkap untuk kebutuhan digital Anda.</p>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="icon-box"><i class="fas fa-rocket"></i></div>
+                <h3>Super Cepat</h3>
+                <p>Optimasi performa maksimal agar pengunjung tidak kabur karena loading lama.</p>
+            </div>
+            <div class="card">
+                <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Mobile Friendly</h3>
+                <p>Tampilan responsif yang sempurna di HP, Tablet, dan Laptop.</p>
+            </div>
+            <div class="card">
+                <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+                <h3>Keamanan Terjamin</h3>
+                <p>Proteksi SSL dan perlindungan dari serangan siber dasar.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Webify Studio</h3>
+            <p>Membantu bisnis Anda tumbuh di era digital.</p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Webify Studio by Rahmat Hedo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button class="chat-btn" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
 
     <div class="chat-container" id="chatContainer">
         <div class="chat-header">
-            <h3>Asisten Virtual</h3>
-            <button class="close-btn" onclick="toggleChat()">×</button>
+            <div class="header-info">
+                <div class="avatar-bot"><i class="fas fa-robot"></i></div>
+                <div>
+                    <h3>Asisten Webify</h3>
+                    <span class="status">Online</span>
+                </div>
+            </div>
+            <button class="close-btn" onclick="toggleChat()"><i class="fas fa-times"></i></button>
         </div>
         
         <div class="chat-messages" id="chatMessages">
-            <div class="message bot-message">Halo! Ada yang bisa saya bantu?</div>
+            <div class="message bot-message">Halo! 👋 Saya siap membantu Anda membuat website impian. Ada pertanyaan?</div>
         </div>
 
         <div class="chat-input-area">
-            <input type="text" id="userInput" placeholder="Tulis pesan..." onkeypress="handleEnter(event)">
-            <button onclick="sendMessage()">➤</button>
+            <input type="text" id="userInput" placeholder="Ketik pesan..." onkeypress="handleEnter(event)">
+            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
-    <script>
-        /* --- JAVASCRIPT LOGIC --- */
-        
-        // Fungsi buka/tutup chat
-        function toggleChat() {
-            const chatContainer = document.getElementById('chatContainer');
-            if (chatContainer.style.display === 'none' || chatContainer.style.display === '') {
-                chatContainer.style.display = 'flex';
-            } else {
-                chatContainer.style.display = 'none';
-            }
-        }
-
-        // Fungsi kirim pesan saat tekan Enter
-        function handleEnter(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        }
-
-        // Fungsi utama mengirim pesan
-        function sendMessage() {
-            const inputField = document.getElementById('userInput');
-            const messageText = inputField.value.trim();
-
-            if (messageText === "") return;
-
-            // 1. Tampilkan pesan User
-            addMessage(messageText, 'user-message');
-            inputField.value = ''; // Kosongkan input
-
-            // 2. Simulasi bot berpikir (Loading/Delay)
-            setTimeout(() => {
-                // Di sini nanti tempat kita panggil API Backend (Fetch)
-                const botReply = "Ini adalah balasan otomatis. Backend belum terhubung.";
-                addMessage(botReply, 'bot-message');
-            }, 1000);
-        }
-
-        // Helper untuk menambah bubble chat ke layar
-        function addMessage(text, className) {
-            const chatMessages = document.getElementById('chatMessages');
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', className);
-            messageDiv.textContent = text;
-            chatMessages.appendChild(messageDiv);
-
-            // Auto scroll ke bawah
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
