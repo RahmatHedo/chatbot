@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chatbot Widget</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Website Kamu</h1>
+
+    <button class="chat-btn" onclick="toggleChat()">💬</button>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>Asisten Virtual</h3>
+            <button class="close-btn" onclick="toggleChat()">×</button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">Halo! Ada yang bisa saya bantu?</div>
+        </div>
+
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Tulis pesan..." onkeypress="handleEnter(event)">
+            <button onclick="sendMessage()">➤</button>
+        </div>
+    </div>
+
+    <script>
+        /* --- JAVASCRIPT LOGIC --- */
+        
+        // Fungsi buka/tutup chat
+        function toggleChat() {
+            const chatContainer = document.getElementById('chatContainer');
+            if (chatContainer.style.display === 'none' || chatContainer.style.display === '') {
+                chatContainer.style.display = 'flex';
+            } else {
+                chatContainer.style.display = 'none';
+            }
+        }
+
+        // Fungsi kirim pesan saat tekan Enter
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Fungsi utama mengirim pesan
+        function sendMessage() {
+            const inputField = document.getElementById('userInput');
+            const messageText = inputField.value.trim();
+
+            if (messageText === "") return;
+
+            // 1. Tampilkan pesan User
+            addMessage(messageText, 'user-message');
+            inputField.value = ''; // Kosongkan input
+
+            // 2. Simulasi bot berpikir (Loading/Delay)
+            setTimeout(() => {
+                // Di sini nanti tempat kita panggil API Backend (Fetch)
+                const botReply = "Ini adalah balasan otomatis. Backend belum terhubung.";
+                addMessage(botReply, 'bot-message');
+            }, 1000);
+        }
+
+        // Helper untuk menambah bubble chat ke layar
+        function addMessage(text, className) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', className);
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+
+            // Auto scroll ke bawah
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
+</body>
+</html>
