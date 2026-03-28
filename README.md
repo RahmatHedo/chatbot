@@ -14,7 +14,7 @@ Dibangun dengan **Node.js**, **Express**, dan **MySQL**, proyek ini menggunakan 
 
 ---
 
-##  Fitur Utama
+## ✨ Fitur Utama
 
 - ✅ **Operasi CRUD Lengkap** — Tambah, Baca, Perbarui, dan Hapus data buku
 - 🐳 **Infrastruktur Docker** — Setup *zero-config* untuk database dan aplikasi backend
@@ -105,35 +105,6 @@ docker logs api_backend
 
 ---
 
-## 📦 Contoh Request & Response
-
-### ➕ Tambah Buku Baru — `POST /api/books`
-
-**Request Body (JSON):**
-
-```json
-{
-  "title": "Mastering Docker & Node.js",
-  "author": "Rahmat Hedo",
-  "published_year": 2026
-}
-```
-
-**Response (201 Created):**
-
-```json
-{
-  "status": "success",
-  "message": "Buku berhasil ditambahkan",
-  "data": {
-    "id": 1,
-    "title": "Mastering Docker & Node.js",
-    "author": "Rahmat Hedo",
-    "published_year": 2026
-  }
-}
-```
-
 ---
 
 ## 🗄️ Akses Langsung ke Database
@@ -157,7 +128,33 @@ SELECT * FROM books;
 
 Seluruh endpoint API (`POST`, `GET`, `PUT`, `DELETE`) telah diuji menggunakan **Postman**.
 
+### ➕ Create — `POST /api/books`
+<img width="883" height="798" alt="Delete" src="https://github.com/user-attachments/assets/9537495b-ce51-400f-9925-06446ccf5e54" />
 
+---
+
+### 📋 Read All — `GET /api/books`
+<img width="877" height="793" alt="Update" src="https://github.com/user-attachments/assets/95adad84-ab58-4cb1-b63c-2279b4bb038e" />
+
+---
+
+### 🔍 Read by ID — `GET /api/books/:id`
+<img width="875" height="793" alt="Read by ID" src="https://github.com/user-attachments/assets/8b9febf6-cdf3-41fd-9147-3ce304cb0e1b" />
+
+---
+
+### ✏️ Update — `PUT /api/books/:id`
+<img width="868" height="794" alt="Read All" src="https://github.com/user-attachments/assets/4d466ae3-fff4-4129-9dbb-9d8f0da5a428" />
+
+---
+
+### 🗑️ Delete — `DELETE /api/books/:id`
+<img width="866" height="791" alt="Create" src="https://github.com/user-attachments/assets/27e2a431-d54a-454b-8433-6093c5cd1fa7" />
+
+---
+
+### 🗄️ Database — Raw Data MySQL
+<img width="590" height="129" alt="Database" src="https://github.com/user-attachments/assets/ecbb5d45-2995-4646-a911-c594e9ce577e" />
 
 ---
 
